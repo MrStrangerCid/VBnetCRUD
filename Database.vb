@@ -10,7 +10,10 @@ Module Database
 
     'subroutine/function for db connect, just call the function name every transaction in your program
     Sub openCon()
-        conn.ConnectionString = "server=localhost; username=root; password=; database=crud" 'details of your db
+        If conn.State = ConnectionState.Open Then
+            conn.Close()
+        End If
+        conn.ConnectionString = "server=localhost; username=root; password=; database=crud"
         conn.Open()
     End Sub
 End Module
